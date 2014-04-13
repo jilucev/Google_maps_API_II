@@ -1,0 +1,13 @@
+
+html, body, #map-canvas {
+  height: 100%;
+  margin: 0px;
+  padding: 0px
+}
+
+
+.checkbox-form {
+  float: left;
+  background-color: lightblue;
+  border: 1px solid black;
+}
