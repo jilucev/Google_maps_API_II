@@ -5,6 +5,8 @@
      var marker;
      var map;
 
+     var sitesArray = [jerichoBeach, troutLake, spiritPark];
+
   function initialize() {
     var mapOptions = {
       zoom: 12,
@@ -63,16 +65,6 @@
   });
 
 
-    // marker = new google.maps.Marker({
-    //     position: vancouver,
-    //     map: map,
-    //     draggable: true,
-    //     animation: google.maps.Animation.DROP,
-    //     title: 'Vancouver'
-    // });
-    // google.maps.event.addListener(marker, 'click', toggleBounce);
-  
-
     marker1 = new google.maps.Marker({
         position: jerichoBeach,
         map: map,
@@ -81,10 +73,15 @@
         title: 'Jericho Beach'
     });
 
-    google.maps.event.addListener(marker1,'click', function() {
-      jbinfowindow.open(map,marker1);
-      toggleBounce(marker1);
-    });
+      google.maps.event.addListener(marker1,'click', function() {
+        jbinfowindow.open(map,marker1);
+        toggleBounce(marker1);
+      });
+
+        $('#marker1').change(function() {
+        $('marker1').hide();
+        });
+
 
     marker2 = new google.maps.Marker({
         position: troutLake,
@@ -92,11 +89,14 @@
         draggable: true,
         animation: google.maps.Animation.DROP,
         title: 'Trout Lake'
-    });
-     google.maps.event.addListener(marker2,'click', function() {
-      tlinfowindow.open(map,marker2);
-      toggleBounce(marker2);
-    });
+    }); 
+
+
+      google.maps.event.addListener(marker2,'click', function() {
+          tlinfowindow.open(map,marker2);
+          toggleBounce(marker2);
+        });
+
 
     marker3 = new google.maps.Marker({
         position: spiritPark,
@@ -105,10 +105,14 @@
         animation: google.maps.Animation.DROP,
         title: 'Spirit Park'
     });
-     google.maps.event.addListener(marker3,'click', function() {
-      spinfowindow.open(map,marker3);
-      toggleBounce(marker3);
-    });
+
+
+      google.maps.event.addListener(marker3,'click', function() {
+        spinfowindow.open(map,marker3);
+        toggleBounce(marker3);
+      });
+
+
 
   }
 
@@ -121,3 +125,7 @@
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
+
+ 
+  
+
