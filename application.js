@@ -2,7 +2,7 @@
      var jerichoBeach = new google.maps.LatLng(49.2740734,-123.194372);
      var troutLake = new google.maps.LatLng(49.255425,-123.065519);
      var spiritPark = new google.maps.LatLng(49.2576803,-123.2297588,13);
-     var marker;
+     var markers = [];
      var map;
 
      var sitesArray = [jerichoBeach, troutLake, spiritPark];
@@ -11,9 +11,18 @@
     var mapOptions = {
       zoom: 12,
       center: jerichoBeach
+     
     }
    
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+   addMarker1(jerichoBeach);
+   addMarker2(troutLake);
+   addMarker3(spiritPark);
+
+  //   google.maps.event.addListener(map, 'click', function(event) {
+  //   addMarker(event.latLng);
+  // });
 
 
   var contentStringJerichoBeach = '<div id="content" >'+
@@ -65,6 +74,7 @@
   });
 
 
+    function addMarker1(location) {
     marker1 = new google.maps.Marker({
         position: jerichoBeach,
         map: map,
@@ -73,16 +83,28 @@
         title: 'Jericho Beach'
     });
 
+      markers.push(marker1);
+      }
+    
+
       google.maps.event.addListener(marker1,'click', function() {
         jbinfowindow.open(map,marker1);
         toggleBounce(marker1);
       });
 
+
+        
         $('#marker1').change(function() {
-        $('marker1').hide();
+          if (!($('#marker1').is(':checked'))) {
+          marker1.setMap(null);
+          }
+          else {
+           marker1.setMap(map);
+         }
         });
 
 
+    function addMarker2(location) {
     marker2 = new google.maps.Marker({
         position: troutLake,
         map: map,
@@ -90,6 +112,8 @@
         animation: google.maps.Animation.DROP,
         title: 'Trout Lake'
     }); 
+    markers.push(marker2);
+      }
 
 
       google.maps.event.addListener(marker2,'click', function() {
@@ -97,7 +121,19 @@
           toggleBounce(marker2);
         });
 
+        $('#marker2').change(function() {
+          if (!($('#marker2').is(':checked'))) {
+          marker2.setMap(null);
+          }
+          else {
+           marker2.setMap(map);
+         }
+        });
 
+
+
+      
+    function addMarker3(location) {
     marker3 = new google.maps.Marker({
         position: spiritPark,
         map: map,
@@ -105,16 +141,31 @@
         animation: google.maps.Animation.DROP,
         title: 'Spirit Park'
     });
-
+    markers.push(marker3);
+  }
 
       google.maps.event.addListener(marker3,'click', function() {
         spinfowindow.open(map,marker3);
         toggleBounce(marker3);
       });
 
+        $('#marker3').change(function() {
+          if (!($('#marker3').is(':checked'))) {
+          marker3.setMap(null);
+          }
+          else {
+           marker3.setMap(map);
+         }
+        });
+
+
 
 
   }
+
+  
+
+
 
   function toggleBounce(marker) {
     if (marker.getAnimation() != null) {
@@ -124,7 +175,42 @@
     }
   }
 
+
+
   google.maps.event.addDomListener(window, 'load', initialize);
+
+
+  //  function clearMarker(marker) {
+  //   console.log('in the method');
+  //   if (marker == marker1) {
+  //     markers[0].setMap(null)
+  //     showMarkers(markers);
+  //   }
+  //   else if (marker == marker2) {
+  //     markers[1] = null
+  //   }
+  //   else {
+  //     markers[2] = null 
+  //   }
+  // }
+  //   function showMarkers(markers) {
+  //     console.log('in show markers' + markers);
+  //   // setAllMap(map);
+
+
+
+function setAllMap(map, markers) {
+  console.log('in setAll map' + markers);
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+
+
+
+ 
+
+
 
  
   
