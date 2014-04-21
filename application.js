@@ -1,4 +1,4 @@
- // var vancouver = new google.maps.LatLng(49.2569777,-123.123904);
+
      var jerichoBeach = new google.maps.LatLng(49.2740734,-123.194372);
      var troutLake = new google.maps.LatLng(49.255425,-123.065519);
      var spiritPark = new google.maps.LatLng(49.2576803,-123.2297588,13);
@@ -19,10 +19,6 @@
    addMarker1(jerichoBeach);
    addMarker2(troutLake);
    addMarker3(spiritPark);
-
-  //   google.maps.event.addListener(map, 'click', function(event) {
-  //   addMarker(event.latLng);
-  // });
 
 
   var contentStringJerichoBeach = '<div id="content" >'+
@@ -130,8 +126,6 @@
          }
         });
 
-
-
       
     function addMarker3(location) {
     marker3 = new google.maps.Marker({
@@ -175,28 +169,7 @@
     }
   }
 
-
-
   google.maps.event.addDomListener(window, 'load', initialize);
-
-
-  //  function clearMarker(marker) {
-  //   console.log('in the method');
-  //   if (marker == marker1) {
-  //     markers[0].setMap(null)
-  //     showMarkers(markers);
-  //   }
-  //   else if (marker == marker2) {
-  //     markers[1] = null
-  //   }
-  //   else {
-  //     markers[2] = null 
-  //   }
-  // }
-  //   function showMarkers(markers) {
-  //     console.log('in show markers' + markers);
-  //   // setAllMap(map);
-
 
 
 function setAllMap(map, markers) {
